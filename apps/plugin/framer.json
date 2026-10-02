@@ -1,0 +1,8 @@
+{
+  "id": "framer-plus",
+  "name": "Framer+",
+  "modes": [
+    "canvas"
+  ],
+  "icon": "icon.svg"
+}
