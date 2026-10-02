@@ -1,0 +1,12 @@
+{
+  "name": "framer-plus",
+  "private": true,
+  "version": "0.0.0",
+  "packageManager": "pnpm@10.15.1",
+  "scripts": {
+    "dev:plugin": "pnpm --filter @framer-plus/plugin dev",
+    "dev:mcp": "pnpm --filter @framer-plus/mcp dev",
+    "build": "pnpm -r build",
+    "typecheck": "pnpm -r typecheck"
+  }
+}
