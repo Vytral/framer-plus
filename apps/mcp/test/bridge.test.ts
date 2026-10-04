@@ -391,7 +391,7 @@ test("MCP tools route typed design requests over a real transport and preserve d
     await server.connect(a)
     await client.connect(b)
     const tools = await client.listTools()
-    assert.equal(tools.tools.length, 31)
+    assert.equal(tools.tools.length, 32)
     assert.equal(
       tools.tools.find((tool) => tool.name === "update_node")?.annotations
         ?.readOnlyHint,

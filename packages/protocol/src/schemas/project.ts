@@ -289,6 +289,9 @@ const list = <T extends z.ZodTypeAny>(s: T) =>
     })
     .strict()
 export const projectInputSchemas = {
+  open_page: z
+    .object({ sessionId, page: nodeRefSchema, expectedCanvas: nodeRefSchema })
+    .strict(),
   get_pages: page
     .extend({ kind: z.enum(["web", "design", "all"]).default("web") })
     .strict(),
@@ -341,6 +344,13 @@ export const projectInputSchemas = {
   get_audit_log: z.object({ sessionId }).strict(),
 }
 export const projectResultSchemas = {
+  open_page: z
+    .object({
+      previousCanvas: nodeRefSchema,
+      canvasRoot: nodeRefSchema,
+      changed: z.boolean(),
+    })
+    .strict(),
   get_pages: list(
     z
       .object({

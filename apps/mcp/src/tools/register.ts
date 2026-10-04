@@ -9,6 +9,8 @@ import type { ZodRawShape } from "zod"
 import type { EditorBridge } from "../bridge/server.js"
 
 const descriptions: Record<Exclude<Method, "ping">, string> = {
+  open_page:
+    "Explicitly navigate the editor to a discovered web page without changing design content. Requires the inspected active canvas; verifies navigation, invalidates tree cursors and revokes previous plan approvals. Inspect again before editing. May disconnect if Framer restarts the plugin.",
   get_pages:
     "Enumerate web/design pages across the project, with paths, active-canvas flag and session-scoped references. Follow nextOffset; inspect a page using get_node_tree root. No editor navigation or writes.",
   get_components:
@@ -73,7 +75,7 @@ const parameterDescriptions: Record<string, string> = {
   include:
     "Optional property groups; omit expensive groups when only hierarchy is needed.",
   depth:
-    "Traversal depth, 0–10. Inspect depthBoundaryRoots separately to reach deeper descendants.",
+    "Traversal depth, 0–10. Inspect continuationRoots separately to reach deeper descendants.",
   maxNodes:
     "Requested node budget; actual response can stop earlier at its byte limit.",
   cursor:
@@ -124,7 +126,7 @@ export function registerEditorTools(
           ]),
         ) as ZodRawShape,
         annotations: {
-          readOnlyHint: !WRITE_METHODS.has(method),
+          readOnlyHint: !WRITE_METHODS.has(method) && method !== "open_page",
           destructiveHint: false,
           idempotentHint:
             !WRITE_METHODS.has(method) && method !== "plan_changes",

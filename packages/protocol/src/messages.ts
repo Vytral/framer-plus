@@ -137,6 +137,7 @@ export const responseSchema = z.discriminatedUnion("ok", [
         resultSchemas.ping,
         resultSchemas.get_project,
         resultSchemas.get_pages,
+        resultSchemas.open_page,
         resultSchemas.get_selection,
         resultSchemas.get_node,
         resultSchemas.get_node_tree,

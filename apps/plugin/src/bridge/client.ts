@@ -134,7 +134,7 @@ export class BridgeClient {
           kind: "hello",
           protocolVersion: PROTOCOL_VERSION,
           client: "framer-plugin",
-          clientVersion: "0.0.0",
+          clientVersion: "0.1.0-alpha.1",
           sessionId: this.sessionId,
           token: config.token,
           capabilities:

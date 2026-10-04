@@ -109,7 +109,7 @@ export class EditorAdapter {
     if (!found)
       throw new BridgeError(
         "NODE_NOT_FOUND",
-        "The referenced node no longer exists",
+        "Node is missing or not resolvable in the current canvas. Inspect pages and open the intended page before retrying a read.",
         false,
       )
     return found
@@ -335,7 +335,11 @@ export class EditorAdapter {
         "Request targets another editor session",
         false,
       )
-    if (WRITE_METHODS.has(method) || method === "plan_changes") {
+    if (
+      WRITE_METHODS.has(method) ||
+      method === "plan_changes" ||
+      method === "open_page"
+    ) {
       const operation = this.mutations.then(() => {
         this.guard(context)
         return this.execute(method, params, context).then(
@@ -377,9 +381,56 @@ export class EditorAdapter {
     raw: unknown,
     context: RequestContext,
   ): Promise<RpcResult> {
-    if (this.projectOperations.supports(method))
+    if (method !== "open_page" && this.projectOperations.supports(method))
       return this.projectOperations.execute(method, raw, context)
     switch (method) {
+      case "open_page": {
+        const p = inputSchemas.open_page.parse(raw)
+        this.checkRef(p.expectedCanvas)
+        const previous = await this.api.getCanvasRoot()
+        if (previous.id !== p.expectedCanvas.id)
+          throw new BridgeError(
+            "PRECONDITION_FAILED",
+            "Active canvas changed; inspect before opening another page",
+            false,
+          )
+        const page = await this.resolve(p.page)
+        if (page.framerType !== "WebPageNode")
+          throw new BridgeError(
+            "NODE_TYPE_UNSUPPORTED",
+            "Only web pages can be opened without switching plugin mode",
+            false,
+          )
+        if (!this.api.project)
+          throw new BridgeError(
+            "CAPABILITY_UNAVAILABLE",
+            "Page navigation is unavailable",
+            false,
+          )
+        const project = await this.api.getProjectInfo()
+        const branch = await this.api.project.getBranch()
+        this.guard(context)
+        this.projectOperations.revoke()
+        this.cursors.clear()
+        if (page.id !== previous.id) await this.api.project.openPage(page.id)
+        this.guard(context)
+        const current = await this.api.getCanvasRoot()
+        if (
+          current.id !== page.id ||
+          (await this.api.getProjectInfo()).id !== project.id ||
+          (await this.api.project.getBranch()).id !== branch.id
+        )
+          throw new BridgeError(
+            "PRECONDITION_FAILED",
+            "Navigation context could not be verified; inspect the current project/canvas",
+            false,
+          )
+        return {
+          previousCanvas: ref(previous.id, this.sessionId),
+          canvasRoot: ref(current.id, this.sessionId),
+          changed: current.id !== previous.id,
+        }
+      }
       case "ping":
         return { alive: true }
       case "get_project": {

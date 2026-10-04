@@ -274,7 +274,13 @@ export class EditorBridge {
     const scopes = new Set<string>()
     if ("sessionId" in params && typeof params.sessionId === "string")
       scopes.add(params.sessionId)
-    for (const key of ["node", "root", "page", "breakpoint"] as const) {
+    for (const key of [
+      "node",
+      "root",
+      "page",
+      "breakpoint",
+      "expectedCanvas",
+    ] as const) {
       if (key in params) {
         const reference = (params as Record<string, unknown>)[key] as
           | { sessionId?: string }

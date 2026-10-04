@@ -714,3 +714,49 @@ test("mixed-plan unknown outcomes stop subsequent resource writes and cannot rep
     "APPROVAL_REQUIRED",
   )
 })
+
+test("explicit page navigation checks the active canvas and invalidates cursors and approvals without design writes", async () => {
+  const f = projectFixture()
+  f.add("page-two", null, "WebPageNode", { path: "/second" })
+  const hero = await call(f, "get_node", { node: node("hero") })
+  const cursor = await call(f, "get_node_tree", { maxNodes: 1 })
+  const plan = await call(f, "plan_changes", {
+    title: "Old page plan",
+    operations: [
+      {
+        scope: "base",
+        node: node("hero"),
+        changes: { name: "Never apply" },
+        expected: { revision: hero.revision },
+      },
+    ],
+  })
+  f.adapter.projectOperations.decide(plan.id, true)
+  const result = await call(f, "open_page", {
+    page: node("page-two"),
+    expectedCanvas: node("page"),
+  })
+  assert.equal(result.canvasRoot.id, "page-two")
+  assert.equal(result.previousCanvas.id, "page")
+  assert.equal(f.writes.length, 0)
+  assert.equal(f.projectWrites.length, 0)
+  await rejects(
+    call(f, "open_page", { page: node("page"), expectedCanvas: node("page") }),
+    "PRECONDITION_FAILED",
+  )
+  await rejects(
+    call(f, "open_page", {
+      page: node("hero"),
+      expectedCanvas: node("page-two"),
+    }),
+    "NODE_TYPE_UNSUPPORTED",
+  )
+  await rejects(
+    call(f, "get_node_tree", { cursor: cursor.next }),
+    "INVALID_CURSOR",
+  )
+  await rejects(
+    call(f, "execute_change_plan", { planId: plan.id }),
+    "APPROVAL_REQUIRED",
+  )
+})

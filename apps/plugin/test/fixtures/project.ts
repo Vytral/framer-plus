@@ -144,6 +144,7 @@ export function projectFixture() {
     },
   ]
   const api: ProjectApi = {
+    openPage: async (id) => f.setCanvas(id),
     getPages: async (kind) =>
       [...f.state.values()]
         .filter((s) =>

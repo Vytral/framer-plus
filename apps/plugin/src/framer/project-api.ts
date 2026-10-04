@@ -2,6 +2,7 @@ import type { framer } from "@framer/plugin"
 import { type EditorNode, wrapNativeNode } from "./api.js"
 export type NativeProjectApi = Pick<
   typeof framer,
+  | "navigateTo"
   | "getNode"
   | "getNodesWithType"
   | "getNodesWithAttributeSet"
@@ -43,6 +44,7 @@ export interface CmsCollection {
   getItems(): Promise<CmsItem[]>
 }
 export interface ProjectApi {
+  openPage(id: string): Promise<void>
   getPages(kind: "web" | "design" | "all"): Promise<EditorNode[]>
   getDefinitions(): Promise<EditorNode[]>
   getSvgs(): Promise<Array<{ id: string; nodeId: string; byteLength: number }>>
@@ -103,6 +105,7 @@ export function createProjectApi(native: NativeProjectApi): ProjectApi {
     }
   }
   return {
+    openPage: async (id) => native.navigateTo(id, { zoomIntoView: false }),
     getPages: async (kind) => {
       const nodes = []
       if (kind !== "design")
