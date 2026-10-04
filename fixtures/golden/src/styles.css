@@ -1,0 +1,139 @@
+/* Generated layout. Unsupported semantics are documented in EXPORT_REPORT.md. */
+
+* { box-sizing: border-box; }
+
+body { margin: 0; }
+
+:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+
+:root {
+  --color-04a9fba2f0c4: rgba(245, 245, 240, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+:root {
+  --color-04a9fba2f0c4: rgba(24, 24, 24, 1);
+}
+}
+
+.fp-description-c9046f7a {
+  height: fit-content;
+  opacity: 1;
+  width: 100%;
+}
+
+.fp-desktop-68693d02 {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  height: fit-content;
+  justify-content: flex-start;
+  margin-inline: auto;
+  max-width: 1200px;
+  opacity: 1;
+  padding: 24px;
+  width: 100%;
+}
+
+.fp-feature-body-8347152d {
+  height: fit-content;
+  opacity: 1;
+  width: 100%;
+}
+
+.fp-feature-title-38ed631f {
+  height: fit-content;
+  opacity: 1;
+  width: 100%;
+}
+
+.fp-features-5b8a8b56 {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  height: fit-content;
+  justify-content: flex-start;
+  opacity: 1;
+  padding: 24px;
+  width: 100%;
+}
+
+.fp-headline-25b1ed96 {
+  height: fit-content;
+  opacity: 1;
+  width: 100%;
+}
+
+.fp-hero-ae6c79d1 {
+  align-items: flex-start;
+  background-color: var(--color-04a9fba2f0c4);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  height: fit-content;
+  justify-content: flex-start;
+  opacity: 1;
+  padding: 24px;
+  width: 100%;
+}
+
+@media (max-width: 767.98px) {
+.fp-desktop-68693d02 {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: fit-content;
+  justify-content: flex-start;
+  margin-inline: auto;
+  max-width: 390px;
+  opacity: 1;
+  padding: 24px;
+  width: 100%;
+}
+.fp-description-c9046f7a {
+  height: fit-content;
+  opacity: 1;
+  width: 100%;
+}
+.fp-feature-body-8347152d {
+  height: fit-content;
+  opacity: 1;
+  width: 100%;
+}
+.fp-feature-title-38ed631f {
+  height: fit-content;
+  opacity: 1;
+  width: 100%;
+}
+.fp-features-5b8a8b56 {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: fit-content;
+  justify-content: flex-start;
+  opacity: 1;
+  padding: 24px;
+  width: 100%;
+}
+.fp-headline-25b1ed96 {
+  height: fit-content;
+  opacity: 1;
+  width: 100%;
+}
+.fp-hero-ae6c79d1 {
+  align-items: flex-start;
+  background-color: var(--color-04a9fba2f0c4);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: fit-content;
+  justify-content: flex-start;
+  opacity: 1;
+  padding: 24px;
+  width: 100%;
+}
+}

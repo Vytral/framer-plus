@@ -1,14 +1,10 @@
-import { z } from "zod"
+export * from "./messages.js"
+export {
+  type RequestContext,
+  type RequestHandler,
+  RpcPeer,
+} from "./rpc/peer.js"
+export * from "./schemas/commands.js"
+export * from "./schemas/design.js"
 
-export const bridgeMessageSchema = z.discriminatedUnion("type", [
-  z.object({
-    type: z.literal("hello"),
-    version: z.string(),
-  }),
-  z.object({
-    type: z.literal("selection.changed"),
-    nodeIds: z.array(z.string()),
-  }),
-])
-
-export type BridgeMessage = z.infer<typeof bridgeMessageSchema>
+export * from "./schemas/project.js"

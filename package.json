@@ -1,12 +1,28 @@
 {
   "name": "framer-plus",
   "private": true,
-  "version": "0.0.0",
-  "packageManager": "pnpm@10.15.1",
+  "version": "0.1.0-alpha.1",
+  "packageManager": "pnpm@12.8.1+sha512.f64ba907507f5ceafe06c8d38e6052d0179444580ec1279ddd5bfc11cb48aa8a2644b66598e07e761da84872a9fc57d5f902b87fa49d024198d558612aabbe45",
   "scripts": {
-    "dev:plugin": "pnpm --filter @framer-plus/plugin dev",
-    "dev:mcp": "pnpm --filter @framer-plus/mcp dev",
+    "dev:plugin": "pnpm build:shared && pnpm --filter @framer-plus/plugin dev",
+    "dev:mcp": "pnpm build:shared && pnpm --filter @framer-plus/mcp dev",
     "build": "pnpm -r build",
-    "typecheck": "pnpm -r typecheck"
+    "typecheck": "pnpm build:shared && pnpm -r typecheck",
+    "lint": "biome check .",
+    "format": "biome format --write .",
+    "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm build",
+    "start:mcp": "pnpm --filter @framer-plus/mcp start",
+    "build:shared": "pnpm --filter @framer-plus/core --filter @framer-plus/protocol --filter @framer-plus/design build",
+    "test": "pnpm build:shared && pnpm -r --if-present test",
+    "design": "node scripts/design.mjs",
+    "release:prepare": "node scripts/release.mjs",
+    "verify:export": "node scripts/verify-export.mjs",
+    "release:verify": "node scripts/verify-release.mjs"
+  },
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.15"
   }
 }

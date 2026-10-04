@@ -1,0 +1,27 @@
+{
+  "name": "@framer-plus/design",
+  "private": true,
+  "version": "0.1.0-alpha.1",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit && tsc -p tsconfig.test.json",
+    "test": "node --import tsx --test test/*.test.ts"
+  },
+  "dependencies": {
+    "@framer-plus/core": "workspace:*",
+    "@framer-plus/protocol": "workspace:*",
+    "zod": "3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "24.3.0",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3"
+  }
+}

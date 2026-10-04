@@ -1,23 +1,30 @@
 {
   "name": "@framer-plus/plugin",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0-alpha.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit && tsc -p tsconfig.test.json",
+    "test": "node --import tsx --test test/*.test.ts test/*.test.tsx"
   },
   "dependencies": {
-    "framer": "latest",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "@framer/plugin": "5.1.0",
+    "@framer-plus/protocol": "workspace:*",
+    "@framer-plus/core": "workspace:*"
   },
   "devDependencies": {
-    "@types/react": "^19.1.11",
-    "@types/react-dom": "^19.1.7",
-    "@vitejs/plugin-react": "^5.0.2",
-    "typescript": "^5.9.2",
-    "vite": "^7.1.4"
+    "@types/react": "18.3.24",
+    "@types/react-dom": "18.3.7",
+    "@vitejs/plugin-react": "5.2.0",
+    "typescript": "5.9.3",
+    "vite": "7.3.6",
+    "vite-plugin-framer": "1.1.1",
+    "vite-plugin-mkcert": "2.1.0",
+    "tsx": "4.23.15",
+    "@types/node": "24.3.0"
   }
 }

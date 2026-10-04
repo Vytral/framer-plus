@@ -1,0 +1,12 @@
+{
+  "roles": {
+    "hero": "section",
+    "headline": "h1",
+    "features": "section",
+    "feature-title": "h2",
+    "phone-hero": "section",
+    "phone-headline": "h1",
+    "phone-features": "section",
+    "phone-feature-title": "h2"
+  }
+}

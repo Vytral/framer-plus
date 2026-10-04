@@ -50,3 +50,84 @@ h1 {
   justify-content: space-between;
   align-items: center;
 }
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+label {
+  font-size: 13px;
+}
+input {
+  width: 100%;
+  background: #151517;
+  color: inherit;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 10px;
+}
+button {
+  background: #fff;
+  color: #111;
+  border: 0;
+  border-radius: 8px;
+  padding: 9px 14px;
+  cursor: pointer;
+}
+button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+input:focus-visible,
+button:focus-visible {
+  outline: 2px solid #80bfff;
+  outline-offset: 3px;
+}
+.actions {
+  display: flex;
+  gap: 8px;
+}
+.hint,
+.session {
+  font-size: 12px;
+  opacity: 0.7;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.error {
+  color: #ff9999;
+  margin: 0;
+  font-size: 12px;
+}
+.plan-review {
+  border-top: 1px solid #444;
+  padding-top: 16px;
+}
+.plan-review h2 {
+  margin: 0 0 12px;
+  font-size: 16px;
+}
+.plan h3 {
+  margin: 0 0 8px;
+  font-size: 14px;
+}
+.plan {
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+.plan ol {
+  padding-left: 20px;
+  font-size: 13px;
+}
+.plan pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  background: #151517;
+  padding: 8px;
+}
+.plan .actions {
+  margin-top: 12px;
+}

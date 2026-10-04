@@ -7,3 +7,7 @@ build/
 !.env.example
 .DS_Store
 *.log
+
+# Local assistant settings and manually packaged development archives
+.claude/
+apps/plugin.zip

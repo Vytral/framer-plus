@@ -1,0 +1,870 @@
+{
+  "schemaVersion": 1,
+  "adapter": "framer-plugin",
+  "project": {
+    "id": "synthetic-landing",
+    "name": "Framer+ fixture",
+    "branchId": "main"
+  },
+  "rootId": "page",
+  "nodes": [
+    {
+      "ref": {
+        "id": "page",
+        "sessionId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+      },
+      "type": "page",
+      "name": "page",
+      "parent": null,
+      "children": [
+        {
+          "id": "desktop",
+          "sessionId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+        },
+        {
+          "id": "phone",
+          "sessionId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+        }
+      ],
+      "childrenTruncated": false,
+      "layout": {
+        "width": {
+          "mode": "fixed",
+          "raw": "1200px",
+          "value": 1200,
+          "unit": "px"
+        },
+        "height": {
+          "mode": "fit-content",
+          "raw": "fit-content"
+        },
+        "positioning": "flow"
+      },
+      "visual": {
+        "opacity": 1,
+        "visible": true
+      },
+      "capabilities": {
+        "read": true,
+        "treeRead": true,
+        "writableProperties": [],
+        "breakpointWritableProperties": [],
+        "clearBreakpointOverride": false
+      },
+      "metadata": {
+        "framerType": "WebPageNode",
+        "isReplica": false,
+        "originalId": null
+      },
+      "revision": "v1:page",
+      "warnings": []
+    },
+    {
+      "ref": {
+        "id": "desktop",
+        "sessionId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+      },
+      "type": "stack",
+      "name": "Desktop",
+      "parent": {
+        "id": "page",
+        "sessionId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+      },
+      "children": [
+        {
+          "id": "hero",
+          "sessionId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+        },
+        {
+          "id": "features",
+          "sessionId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+        }
+      ],
+      "childrenTruncated": false,
+      "layout": {
+        "width": {
+          "mode": "fixed",
+          "raw": "1200px",
+          "value": 1200,
+          "unit": "px"
+        },
+        "height": {
+          "mode": "fit-content",
+          "raw": "fit-content"
+        },
+        "positioning": "flow",
+        "kind": "stack",
+        "gap": "24px",
+        "padding": "24px",
+        "direction": "vertical",
+        "alignment": "start",
+        "distribution": "start"
+      },
+      "visual": {
+        "opacity": 1,
+        "visible": true
+      },
+      "capabilities": {
+        "read": true,
+        "treeRead": true,
+        "writableProperties": [],
+        "breakpointWritableProperties": [],
+        "clearBreakpointOverride": false
+      },
+      "metadata": {
+        "framerType": "FrameNode",
+        "isReplica": false,
+        "originalId": null
+      },
+      "revision": "v1:desktop",
+      "warnings": []
+    },
+    {
+      "ref": {
+        "id": "hero",
+        "sessionId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+      },
+      "type": "stack",
+      "name": "Hero",
+      "parent": {
+        "id": "desktop",
+        "sessionId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+      },
+      "children": [
+        {
+          "id": "headline",
+          "sessionId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+        },
+        {
+          "id": "description",
+          "sessionId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+        }
+      ],
+      "childrenTruncated": false,
+      "layout": {
+        "width": {
+          "mode": "fill",
+          "raw": "1fr",
+          "value": 1,
+          "unit": "fr"
+        },
+        "height": {
+          "mode": "fit-content",
+          "raw": "fit-content"
+        },
+        "positioning": "flow",
+        "kind": "stack",
+        "gap": "24px",
+        "padding": "24px",
+        "direction": "vertical",
+        "alignment": "start",
+        "distribution": "start"
+      },
+      "visual": {
+        "opacity": 1,
+        "visible": true,
+        "background": {
+          "kind": "style",
+          "id": "brand",
+          "name": "Brand",
+          "light": "rgba(245, 245, 240, 1)",
+          "dark": "rgba(24, 24, 24, 1)"
+        }
+      },
+      "capabilities": {
+        "read": true,
+        "treeRead": true,
+        "writableProperties": [],
+        "breakpointWritableProperties": [],
+        "clearBreakpointOverride": false
+      },
+      "metadata": {
+        "framerType": "FrameNode",
+        "isReplica": false,
+        "originalId": null
+      },
+      "revision": "v1:hero",
+      "warnings": []
+    },
+    {
+      "ref": {
+        "id": "headline",
+        "sessionId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+      },
+      "type": "text",
+      "name": "Headline",
+      "parent": {
+        "id": "hero",
+        "sessionId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+      },
+      "children": [],
+      "childrenTruncated": false,
+      "layout": {
+        "width": {
+          "mode": "fill",
+          "raw": "1fr",
+          "value": 1,
+          "unit": "fr"
+        },
+        "height": {
+          "mode": "fit-content",
+          "raw": "fit-content"
+        },
+        "positioning": "flow"
+      },
+      "visual": {
+        "opacity": 1,
+        "visible": true
+      },
+      "capabilities": {
+        "read": true,
+        "treeRead": true,
+        "writableProperties": [],
+        "breakpointWritableProperties": [],
+        "clearBreakpointOverride": false
+      },
+      "metadata": {
+        "framerType": "TextNode",
+        "isReplica": false,
+        "originalId": null
+      },
+      "revision": "v1:headline",
+      "warnings": [],
+      "text": {
+        "content": "Make room for ideas.",
+        "truncated": false
+      }
+    },
+    {
+      "ref": {
+        "id": "description",
+        "sessionId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+      },
+      "type": "text",
+      "name": "Description",
+      "parent": {
+        "id": "hero",
+        "sessionId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+      },
+      "children": [],
+      "childrenTruncated": false,
+      "layout": {
+        "width": {
+          "mode": "fill",
+          "raw": "1fr",
+          "value": 1,
+          "unit": "fr"
+        },
+        "height": {
+          "mode": "fit-content",
+          "raw": "fit-content"
+        },
+        "positioning": "flow"
+      },
+      "visual": {
+        "opacity": 1,
+        "visible": true
+      },
+      "capabilities": {
+        "read": true,
+        "treeRead": true,
+        "writableProperties": [],
+        "breakpointWritableProperties": [],
+        "clearBreakpointOverride": false
+      },
+      "metadata": {
+        "framerType": "TextNode",
+        "isReplica": false,
+        "originalId": null
+      },
+      "revision": "v1:description",
+      "warnings": [],
+      "text": {
+        "content": "A synthetic fixture authored for Framer+ tests.",
+        "truncated": false
+      }
+    },
+    {
+      "ref": {
+        "id": "features",
+        "sessionId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+      },
+      "type": "stack",
+      "name": "Features",
+      "parent": {
+        "id": "desktop",
+        "sessionId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+      },
+      "children": [
+        {
+          "id": "feature-title",
+          "sessionId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+        },
+        {
+          "id": "feature-body",
+          "sessionId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+        }
+      ],
+      "childrenTruncated": false,
+      "layout": {
+        "width": {
+          "mode": "fill",
+          "raw": "1fr",
+          "value": 1,
+          "unit": "fr"
+        },
+        "height": {
+          "mode": "fit-content",
+          "raw": "fit-content"
+        },
+        "positioning": "flow",
+        "kind": "stack",
+        "gap": "24px",
+        "padding": "24px",
+        "direction": "vertical",
+        "alignment": "start",
+        "distribution": "start"
+      },
+      "visual": {
+        "opacity": 1,
+        "visible": true
+      },
+      "capabilities": {
+        "read": true,
+        "treeRead": true,
+        "writableProperties": [],
+        "breakpointWritableProperties": [],
+        "clearBreakpointOverride": false
+      },
+      "metadata": {
+        "framerType": "FrameNode",
+        "isReplica": false,
+        "originalId": null
+      },
+      "revision": "v1:features",
+      "warnings": []
+    },
+    {
+      "ref": {
+        "id": "feature-title",
+        "sessionId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+      },
+      "type": "text",
+      "name": "Feature title",
+      "parent": {
+        "id": "features",
+        "sessionId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+      },
+      "children": [],
+      "childrenTruncated": false,
+      "layout": {
+        "width": {
+          "mode": "fill",
+          "raw": "1fr",
+          "value": 1,
+          "unit": "fr"
+        },
+        "height": {
+          "mode": "fit-content",
+          "raw": "fit-content"
+        },
+        "positioning": "flow"
+      },
+      "visual": {
+        "opacity": 1,
+        "visible": true
+      },
+      "capabilities": {
+        "read": true,
+        "treeRead": true,
+        "writableProperties": [],
+        "breakpointWritableProperties": [],
+        "clearBreakpointOverride": false
+      },
+      "metadata": {
+        "framerType": "TextNode",
+        "isReplica": false,
+        "originalId": null
+      },
+      "revision": "v1:feature-title",
+      "warnings": [],
+      "text": {
+        "content": "A clear starting point",
+        "truncated": false
+      }
+    },
+    {
+      "ref": {
+        "id": "feature-body",
+        "sessionId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+      },
+      "type": "text",
+      "name": "Feature body",
+      "parent": {
+        "id": "features",
+        "sessionId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+      },
+      "children": [],
+      "childrenTruncated": false,
+      "layout": {
+        "width": {
+          "mode": "fill",
+          "raw": "1fr",
+          "value": 1,
+          "unit": "fr"
+        },
+        "height": {
+          "mode": "fit-content",
+          "raw": "fit-content"
+        },
+        "positioning": "flow"
+      },
+      "visual": {
+        "opacity": 1,
+        "visible": true
+      },
+      "capabilities": {
+        "read": true,
+        "treeRead": true,
+        "writableProperties": [],
+        "breakpointWritableProperties": [],
+        "clearBreakpointOverride": false
+      },
+      "metadata": {
+        "framerType": "TextNode",
+        "isReplica": false,
+        "originalId": null
+      },
+      "revision": "v1:feature-body",
+      "warnings": [],
+      "text": {
+        "content": "Readable components, explicit limitations, and reusable tokens.",
+        "truncated": false
+      }
+    },
+    {
+      "ref": {
+        "id": "phone",
+        "sessionId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+      },
+      "type": "stack",
+      "name": "Phone",
+      "parent": {
+        "id": "page",
+        "sessionId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+      },
+      "children": [
+        {
+          "id": "phone-hero",
+          "sessionId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+        },
+        {
+          "id": "phone-features",
+          "sessionId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+        }
+      ],
+      "childrenTruncated": false,
+      "layout": {
+        "width": {
+          "mode": "fixed",
+          "raw": "390px",
+          "value": 390,
+          "unit": "px"
+        },
+        "height": {
+          "mode": "fit-content",
+          "raw": "fit-content"
+        },
+        "positioning": "flow",
+        "kind": "stack",
+        "gap": "12px",
+        "padding": "24px",
+        "direction": "vertical",
+        "alignment": "start",
+        "distribution": "start"
+      },
+      "visual": {
+        "opacity": 1,
+        "visible": true
+      },
+      "capabilities": {
+        "read": true,
+        "treeRead": true,
+        "writableProperties": [],
+        "breakpointWritableProperties": [],
+        "clearBreakpointOverride": false
+      },
+      "metadata": {
+        "framerType": "FrameNode",
+        "isReplica": false,
+        "originalId": null
+      },
+      "revision": "v1:phone",
+      "warnings": []
+    },
+    {
+      "ref": {
+        "id": "phone-hero",
+        "sessionId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+      },
+      "type": "stack",
+      "name": "Hero",
+      "parent": {
+        "id": "phone",
+        "sessionId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+      },
+      "children": [
+        {
+          "id": "phone-headline",
+          "sessionId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+        },
+        {
+          "id": "phone-description",
+          "sessionId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+        }
+      ],
+      "childrenTruncated": false,
+      "layout": {
+        "width": {
+          "mode": "fill",
+          "raw": "1fr",
+          "value": 1,
+          "unit": "fr"
+        },
+        "height": {
+          "mode": "fit-content",
+          "raw": "fit-content"
+        },
+        "positioning": "flow",
+        "kind": "stack",
+        "gap": "12px",
+        "padding": "24px",
+        "direction": "vertical",
+        "alignment": "start",
+        "distribution": "start"
+      },
+      "visual": {
+        "opacity": 1,
+        "visible": true,
+        "background": {
+          "kind": "style",
+          "id": "brand",
+          "name": "Brand",
+          "light": "rgba(245, 245, 240, 1)",
+          "dark": "rgba(24, 24, 24, 1)"
+        }
+      },
+      "capabilities": {
+        "read": true,
+        "treeRead": true,
+        "writableProperties": [],
+        "breakpointWritableProperties": [],
+        "clearBreakpointOverride": false
+      },
+      "metadata": {
+        "framerType": "FrameNode",
+        "isReplica": true,
+        "originalId": "hero"
+      },
+      "revision": "v1:phone-hero",
+      "warnings": []
+    },
+    {
+      "ref": {
+        "id": "phone-headline",
+        "sessionId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+      },
+      "type": "text",
+      "name": "Headline",
+      "parent": {
+        "id": "phone-hero",
+        "sessionId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+      },
+      "children": [],
+      "childrenTruncated": false,
+      "layout": {
+        "width": {
+          "mode": "fill",
+          "raw": "1fr",
+          "value": 1,
+          "unit": "fr"
+        },
+        "height": {
+          "mode": "fit-content",
+          "raw": "fit-content"
+        },
+        "positioning": "flow"
+      },
+      "visual": {
+        "opacity": 1,
+        "visible": true
+      },
+      "capabilities": {
+        "read": true,
+        "treeRead": true,
+        "writableProperties": [],
+        "breakpointWritableProperties": [],
+        "clearBreakpointOverride": false
+      },
+      "metadata": {
+        "framerType": "TextNode",
+        "isReplica": true,
+        "originalId": "headline"
+      },
+      "revision": "v1:phone-headline",
+      "warnings": [],
+      "text": {
+        "content": "Make room for ideas.",
+        "truncated": false
+      }
+    },
+    {
+      "ref": {
+        "id": "phone-description",
+        "sessionId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+      },
+      "type": "text",
+      "name": "Description",
+      "parent": {
+        "id": "phone-hero",
+        "sessionId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+      },
+      "children": [],
+      "childrenTruncated": false,
+      "layout": {
+        "width": {
+          "mode": "fill",
+          "raw": "1fr",
+          "value": 1,
+          "unit": "fr"
+        },
+        "height": {
+          "mode": "fit-content",
+          "raw": "fit-content"
+        },
+        "positioning": "flow"
+      },
+      "visual": {
+        "opacity": 1,
+        "visible": true
+      },
+      "capabilities": {
+        "read": true,
+        "treeRead": true,
+        "writableProperties": [],
+        "breakpointWritableProperties": [],
+        "clearBreakpointOverride": false
+      },
+      "metadata": {
+        "framerType": "TextNode",
+        "isReplica": true,
+        "originalId": "description"
+      },
+      "revision": "v1:phone-description",
+      "warnings": [],
+      "text": {
+        "content": "A synthetic fixture authored for Framer+ tests.",
+        "truncated": false
+      }
+    },
+    {
+      "ref": {
+        "id": "phone-features",
+        "sessionId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+      },
+      "type": "stack",
+      "name": "Features",
+      "parent": {
+        "id": "phone",
+        "sessionId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+      },
+      "children": [
+        {
+          "id": "phone-feature-title",
+          "sessionId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+        },
+        {
+          "id": "phone-feature-body",
+          "sessionId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+        }
+      ],
+      "childrenTruncated": false,
+      "layout": {
+        "width": {
+          "mode": "fill",
+          "raw": "1fr",
+          "value": 1,
+          "unit": "fr"
+        },
+        "height": {
+          "mode": "fit-content",
+          "raw": "fit-content"
+        },
+        "positioning": "flow",
+        "kind": "stack",
+        "gap": "12px",
+        "padding": "24px",
+        "direction": "vertical",
+        "alignment": "start",
+        "distribution": "start"
+      },
+      "visual": {
+        "opacity": 1,
+        "visible": true
+      },
+      "capabilities": {
+        "read": true,
+        "treeRead": true,
+        "writableProperties": [],
+        "breakpointWritableProperties": [],
+        "clearBreakpointOverride": false
+      },
+      "metadata": {
+        "framerType": "FrameNode",
+        "isReplica": true,
+        "originalId": "features"
+      },
+      "revision": "v1:phone-features",
+      "warnings": []
+    },
+    {
+      "ref": {
+        "id": "phone-feature-title",
+        "sessionId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+      },
+      "type": "text",
+      "name": "Feature title",
+      "parent": {
+        "id": "phone-features",
+        "sessionId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+      },
+      "children": [],
+      "childrenTruncated": false,
+      "layout": {
+        "width": {
+          "mode": "fill",
+          "raw": "1fr",
+          "value": 1,
+          "unit": "fr"
+        },
+        "height": {
+          "mode": "fit-content",
+          "raw": "fit-content"
+        },
+        "positioning": "flow"
+      },
+      "visual": {
+        "opacity": 1,
+        "visible": true
+      },
+      "capabilities": {
+        "read": true,
+        "treeRead": true,
+        "writableProperties": [],
+        "breakpointWritableProperties": [],
+        "clearBreakpointOverride": false
+      },
+      "metadata": {
+        "framerType": "TextNode",
+        "isReplica": true,
+        "originalId": "feature-title"
+      },
+      "revision": "v1:phone-feature-title",
+      "warnings": [],
+      "text": {
+        "content": "A clear starting point",
+        "truncated": false
+      }
+    },
+    {
+      "ref": {
+        "id": "phone-feature-body",
+        "sessionId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+      },
+      "type": "text",
+      "name": "Feature body",
+      "parent": {
+        "id": "phone-features",
+        "sessionId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+      },
+      "children": [],
+      "childrenTruncated": false,
+      "layout": {
+        "width": {
+          "mode": "fill",
+          "raw": "1fr",
+          "value": 1,
+          "unit": "fr"
+        },
+        "height": {
+          "mode": "fit-content",
+          "raw": "fit-content"
+        },
+        "positioning": "flow"
+      },
+      "visual": {
+        "opacity": 1,
+        "visible": true
+      },
+      "capabilities": {
+        "read": true,
+        "treeRead": true,
+        "writableProperties": [],
+        "breakpointWritableProperties": [],
+        "clearBreakpointOverride": false
+      },
+      "metadata": {
+        "framerType": "TextNode",
+        "isReplica": true,
+        "originalId": "feature-body"
+      },
+      "revision": "v1:phone-feature-body",
+      "warnings": [],
+      "text": {
+        "content": "Readable components, explicit limitations, and reusable tokens.",
+        "truncated": false
+      }
+    }
+  ],
+  "breakpoints": [
+    {
+      "ref": {
+        "id": "desktop",
+        "sessionId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+      },
+      "name": "Desktop",
+      "width": {
+        "mode": "fixed",
+        "raw": "1200px",
+        "value": 1200,
+        "unit": "px"
+      },
+      "primary": true,
+      "inheritsFrom": null
+    },
+    {
+      "ref": {
+        "id": "phone",
+        "sessionId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+      },
+      "name": "Phone",
+      "width": {
+        "mode": "fixed",
+        "raw": "390px",
+        "value": 390,
+        "unit": "px"
+      },
+      "primary": false,
+      "inheritsFrom": {
+        "id": "desktop",
+        "sessionId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+      }
+    }
+  ],
+  "capture": {
+    "atomic": false,
+    "complete": true,
+    "verified": true,
+    "reasons": []
+  }
+}
