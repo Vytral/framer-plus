@@ -8,6 +8,32 @@
 
 ---
 
+
+## Alpha reconciliation — 2026-10-04
+
+The primary product is an AI agent understanding and safely operating on a real Framer project. Design IR and export build on the same semantic model; they are not the sole product goal.
+
+This document retains the original roadmap and acceptance scenarios. A checked task below means the supported implementation exists (**I**), with automated verification (**A**) where indicated. It does **not** certify native write acceptance or the phase's full Definition of Done. **Partial** means only a subset exists; **API-limited** means unavailable public semantics; **Pending** means implementation or acceptance work remains. Phase evidence documents remain the detailed source of truth; [current alpha acceptance](ALPHA_ACCEPTANCE.md) distinguishes dated native observations from fixtures.
+
+| Phases | Implemented/automated evidence | Native acceptance / remaining scope |
+| --- | --- | --- |
+| 0–1 | Workspace, authenticated loopback WSS, strict protocol 4, reconnect/timeouts and session routing | Real-editor pairing confirmed on Oct 2; current reconnection and recovery matrix remain separate checks. |
+| 2–3 | Page discovery, bounded hierarchy, selection/layout/text/visual inspection; allowlisted base edits and readback | Real project, nine pages and 314-node Home traversal verified Oct 4; non-active-page lookup limits observed. Native write readback remains pending; create/move/delete absent. |
+| 4 | Real breakpoint identities, effective exposed values, explicit replica layout/visual writes with primary verification | All three views and representative Hero replicas read Oct 4; override provenance/reset and node font-size scenario API-limited. Native responsive writes pending. |
+| 5–7 | Component/style/CMS inspection, primitive instance controls, scalar CMS edits, mixed reviewed plans across pages/views/resources | Local definitions/controls have API limits. Mixed execution verified with fixtures; native writes pending approval. |
+| 8 | Installation/contribution/protocol/architecture docs, CI and alpha artifact tooling | Public alpha publication tracked in release evidence; Marketplace/new-user onboarding not certified. |
+| 9–10 | Versioned IR, deterministic React generation, golden fixtures and build checks | Explicit viewport ranges required; typography/complex components/real-page fidelity not certified. |
+| 11 | Source mappings, comparison and conflict-aware regeneration | Selected scope only. No reverse engineering, native code-component authoring or remote adapter. |
+| 12 | Alpha release preparation, compatibility/privacy/security guidance | Stable 1.0 is **not complete**; see RELEASE.md gates. |
+
+An explicit `open_page` operation enables sequential page workflows without design edits, revoking old approvals/cursors and requiring fresh inspection. Native acceptance of navigation is tracked separately. Cross-page batches never silently switch pages.
+
+Multi-node, multi-view and multi-page operations are explicit reviewed plans, up to ten distinct targets. Plans can combine base/replica layout changes, primitive instance controls, style links and CMS scalar records. Each target retains its revision and page/view context; preflight occurs before the first write and partial outcomes are reported without rollback. `get_pages` supplies cross-page references without editor navigation. A CMS/card association must be discovered by the agent; it is never fabricated.
+
+Independent responsive views can contain divergent content. Automatic correspondence and safe text synchronization between independent views, animation/effect coverage, and broader positioning/visual edits remain implementation/research work; they are not completed by the existing layout abstraction.
+
+Create/move/delete are supported by public SDK primitives but have no safe Framer+ alpha tools yet. They are implementation gaps, not API impossibilities. The original complete responsiveness and stable release acceptance scenarios remain unmet.
+
 ## 1. Purpose
 
 Framer+ is an open-source agent interface for Framer.
@@ -705,7 +731,7 @@ Never silently omit children and imply the tree is complete.
 
 Returns MCP process, bridge and editor-session health.
 
-#### `list_sessions`
+#### `list_sessions` — session discovery is provided by `get_status`
 
 Only needed once multiple editor sessions are supported.
 
@@ -725,11 +751,11 @@ Returns one normalized node.
 
 Returns bounded descendants.
 
-#### `get_parent`
+#### `get_parent` — relationship is returned by `get_node`
 
 Optional convenience tool if tree navigation proves common.
 
-#### `get_children`
+#### `get_children` — relationships are returned by `get_node` / `get_node_tree`
 
 Optional convenience tool if bounded tree traversal is insufficient.
 
@@ -776,11 +802,11 @@ Explicit responsive mutation.
 
 Explicit inheritance restoration.
 
-#### `delete_node`
+#### `delete_node` — planned, not implemented
 
 Later and deliberately separated because deletion is destructive.
 
-#### `create_node`
+#### `create_node` — planned, not implemented
 
 Later. Prefer typed creation operations rather than an unbounded generic node constructor.
 
@@ -1452,17 +1478,17 @@ Turn the scaffold into a reproducible, type-safe development workspace.
 
 ### Tasks
 
-- [ ] Verify the current Framer plugin scaffold against current official plugin requirements.
-- [ ] Correct `framer.json` fields/modes if needed.
-- [ ] Pin sensible dependency versions; avoid uncontrolled `latest` where reproducibility matters.
-- [ ] Add root TypeScript configuration if it meaningfully reduces duplication.
-- [ ] Add formatting and linting with one coherent toolchain.
-- [ ] Add root `check` command.
-- [ ] Ensure all packages typecheck.
-- [ ] Ensure plugin development server starts.
-- [ ] Ensure MCP process starts.
-- [ ] Add minimal contribution/development notes to README when commands stabilize.
-- [ ] Establish package naming and internal exports.
+- [x] Verify the current Framer plugin scaffold against current official plugin requirements. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Correct `framer.json` fields/modes if needed. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Pin sensible dependency versions; avoid uncontrolled `latest` where reproducibility matters. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Add root TypeScript configuration if it meaningfully reduces duplication. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Add formatting and linting with one coherent toolchain. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Add root `check` command. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Ensure all packages typecheck. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Ensure plugin development server starts. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Ensure MCP process starts. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Add minimal contribution/development notes to README when commands stabilize. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Establish package naming and internal exports. **I; verification and native acceptance are tracked in phase evidence.**
 
 ### Definition of Done
 
@@ -1488,18 +1514,18 @@ Establish a reliable authenticated local connection between the Framer plugin an
 
 ### Tasks
 
-- [ ] Implement loopback bridge server in `apps/mcp`.
-- [ ] Implement plugin bridge client.
-- [ ] Define protocol request/response/event envelopes.
-- [ ] Add protocol version negotiation.
-- [ ] Add session IDs.
-- [ ] Add per-run authentication token/handshake strategy.
-- [ ] Add request IDs and timeouts.
-- [ ] Add reconnect with bounded backoff.
-- [ ] Add heartbeat or equivalent stale-session detection if necessary.
-- [ ] Validate all bridge messages using shared schemas.
-- [ ] Expose connection state in plugin UI.
-- [ ] Upgrade `get_status` to report real bridge/editor state.
+- [x] Implement loopback bridge server in `apps/mcp`. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Implement plugin bridge client. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Define protocol request/response/event envelopes. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Add protocol version negotiation. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Add session IDs. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Add per-run authentication token/handshake strategy. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Add request IDs and timeouts. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Add reconnect with bounded backoff. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Add heartbeat or equivalent stale-session detection if necessary. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Validate all bridge messages using shared schemas. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Expose connection state in plugin UI. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Upgrade `get_status` to report real bridge/editor state. **I; verification and native acceptance are tracked in phase evidence.**
 
 ### MCP tools
 
@@ -1532,18 +1558,18 @@ Give agents a trustworthy read-only view into the open Framer project.
 
 ### Tasks
 
-- [ ] Research current official APIs for project metadata and canvas roots.
-- [ ] Implement project summary normalization.
-- [ ] Implement selection reading.
-- [ ] Implement normalized node conversion.
-- [ ] Implement parent/child relationships.
-- [ ] Implement bounded tree traversal.
-- [ ] Normalize basic layout properties.
-- [ ] Normalize text information.
-- [ ] Normalize basic visual information.
-- [ ] Include node capabilities.
-- [ ] Handle unknown/unsupported node types without crashing.
-- [ ] Add truncation/cursor semantics for large trees.
+- [x] Research current official APIs for project metadata and canvas roots. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Implement project summary normalization. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Implement selection reading. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Implement normalized node conversion. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Implement parent/child relationships. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Implement bounded tree traversal. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Normalize basic layout properties. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Normalize text information. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Normalize basic visual information. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Include node capabilities. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Handle unknown/unsupported node types without crashing. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Add truncation/cursor semantics for large trees. **I; verification and native acceptance are tracked in phase evidence.**
 
 ### MCP tools
 
@@ -1591,14 +1617,14 @@ Do not enable a property merely because Framer technically exposes it.
 
 ### Tasks
 
-- [ ] Define mutable schemas separately from read snapshots.
-- [ ] Add capability validation.
-- [ ] Implement `update_node`.
-- [ ] Read back state after mutation.
-- [ ] Return applied changes and warnings.
-- [ ] Add unsupported-property errors.
-- [ ] Investigate lightweight preconditions/revisions.
-- [ ] Add audit-style development logging.
+- [x] Define mutable schemas separately from read snapshots. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Add capability validation. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Implement `update_node`. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Read back state after mutation. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Return applied changes and warnings. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Add unsupported-property errors. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Investigate lightweight preconditions/revisions. **I; verification and native acceptance are tracked in phase evidence.**
+- [ ] Add audit-style development logging. **Partial: content-free local outcomes; no persistent cross-session audit store.**
 
 ### Definition of Done
 
@@ -1626,17 +1652,24 @@ Before coding mutations, document the exact behavior of the current Framer API f
 
 Do not infer API semantics from the existing Unframer connector.
 
+**Research finding (2026-10-02, Plugin API 5.1.0):** the public API exposes
+real breakpoint frames, replica identities and local writes to exposed replica
+attributes, but does not expose per-property override flags, override removal,
+or isolated node `fontSize` writes. The font-size acceptance example and complete
+clear-override semantics remain blocked on API support. Framer+ reports unknown
+inheritance and unsupported operations explicitly. See [Phases 2–4 evidence](PHASES_2_4.md).
+
 ### Tasks
 
-- [ ] Define `Breakpoint` model.
-- [ ] Define responsive property model.
-- [ ] Expose breakpoint list.
-- [ ] Expose responsive state for a node/property.
-- [ ] Distinguish inherited/effective/override values.
-- [ ] Implement override writes only where officially supported.
-- [ ] Implement clear-override semantics.
-- [ ] Prevent accidental base mutation.
-- [ ] Add responsive diagnostics.
+- [x] Define `Breakpoint` model. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Define responsive property model. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Expose breakpoint list. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Expose responsive state for a node/property. **I; verification and native acceptance are tracked in phase evidence.**
+- [ ] Distinguish inherited/effective/override values. **Partial / API-limited: effective values and identity known; per-property provenance remains unknown.**
+- [x] Implement override writes only where officially supported. **I; verification and native acceptance are tracked in phase evidence.**
+- [ ] Implement clear-override semantics. **API-limited: explicit unsupported error; copying base values would not restore inheritance.**
+- [x] Prevent accidental base mutation. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Add responsive diagnostics. **I; verification and native acceptance are tracked in phase evidence.**
 
 ### MCP tools
 
@@ -1675,14 +1708,23 @@ Make reusable Framer structures first-class to agents.
 
 ### Tasks
 
-- [ ] Identify component definitions.
-- [ ] Identify instances.
-- [ ] Resolve instance → definition relationship.
-- [ ] Read variant axes/values.
-- [ ] Read instance overrides.
-- [ ] Distinguish definition changes from instance changes.
-- [ ] Add safe instance mutation.
-- [ ] Add clear-instance-override semantics where supported.
+- [x] Identify component definitions. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Identify instances. **I; verification and native acceptance are tracked in phase evidence.**
+- [ ] Resolve instance → definition relationship. **Partial: identifier resolution for unique local definitions; external/ambiguous references remain unresolved.**
+- [ ] Read variant axes/values. **Partial / API-limited: concrete variant frames; selected axes unavailable.**
+- [ ] Read instance overrides. **Partial / API-limited: current controls known; override provenance unavailable.**
+- [x] Distinguish definition changes from instance changes. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Add safe instance mutation. **I; verification and native acceptance are tracked in phase evidence.**
+- [ ] Add clear-instance-override semantics where supported. **API-limited: explicit unsupported error; no public reset operation.**
+
+### Public Plugin API finding (2026-10-02)
+
+API 5.1.0 exposes component identifiers, instance control values and concrete
+variant frames. Local definitions can be resolved by identifier; external or
+ambiguous definitions remain explicit. Selected variant axes, per-control
+override provenance and override reset are not exposed on public instance nodes.
+The supported adapter edits existing primitive instance controls, while complete
+variant/reset acceptance remains pending API support. See [Phases 5–7](PHASES_5_7.md).
 
 ### Definition of Done
 
@@ -1732,14 +1774,14 @@ Support larger agent tasks without sacrificing user control.
 
 ### Tasks
 
-- [ ] Mutation batches.
-- [ ] Dry-run planning.
-- [ ] Precondition/fingerprint checks.
-- [ ] Change summaries.
-- [ ] Destructive-operation separation.
-- [ ] Branch-aware workflow if supported.
-- [ ] Better audit history.
-- [ ] Optional user approval gates for broad changes.
+- [x] Mutation batches. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Dry-run planning. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Precondition/fingerprint checks. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Change summaries. **I; verification and native acceptance are tracked in phase evidence.**
+- [ ] Destructive-operation separation. **Partial: destructive operations are absent; create/move/delete safety implementation remains pending.**
+- [ ] Branch-aware workflow if supported. **Partial: active branch inspection and context guards; no branch creation/switch/merge.**
+- [ ] Better audit history. **Partial: bounded session-memory history only.**
+- [x] Optional user approval gates for broad changes. **I/A: exact plugin approval is mandatory for reviewed plans; direct single-target tools are separate.**
 
 ### Definition of Done
 
@@ -1755,18 +1797,18 @@ Make Framer+ usable by people other than its authors.
 
 ### Tasks
 
-- [ ] Installation guide.
-- [ ] MCP client examples.
-- [ ] Troubleshooting guide.
-- [ ] Contribution guide.
-- [ ] Architecture documentation extracted from this plan.
-- [ ] CI for checks/tests.
-- [ ] Release workflow.
-- [ ] Changelog strategy.
-- [ ] Example Framer project/fixtures where licensing permits.
-- [ ] Security policy.
-- [ ] Issue templates only if useful.
-- [ ] Public alpha versioning.
+- [x] Installation guide. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] MCP client examples. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Troubleshooting guide. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Contribution guide. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Architecture documentation extracted from this plan. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] CI for checks/tests. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Release workflow. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Changelog strategy. **I; verification and native acceptance are tracked in phase evidence.**
+- [ ] Example Framer project/fixtures where licensing permits. **Partial: synthetic MIT fixtures; no distributable native Framer acceptance project.**
+- [x] Security policy. **I; verification and native acceptance are tracked in phase evidence.**
+- [ ] Issue templates only if useful. **Deferred: not required for this alpha; no templates implemented.**
+- [x] Public alpha versioning. **I; verification and native acceptance are tracked in phase evidence.**
 
 ### Definition of Done
 
@@ -1782,14 +1824,14 @@ Create a semantic representation suitable for analysis and code generation.
 
 ### Tasks
 
-- [ ] Define versioned IR schema.
-- [ ] Build Framer → IR transformation pipeline.
-- [ ] Resolve responsive rules.
-- [ ] Map design tokens.
-- [ ] Infer semantic roles conservatively.
-- [ ] Detect reusable structures.
-- [ ] Preserve unsupported/unknown features as annotations.
-- [ ] Create deterministic IR fixtures.
+- [x] Define versioned IR schema. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Build Framer → IR transformation pipeline. **I; verification and native acceptance are tracked in phase evidence.**
+- [ ] Resolve responsive rules. **Partial: explicit supplied viewport ranges and replica mapping; no invented inheritance or inferred media-query thresholds.**
+- [x] Map design tokens. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Infer semantic roles conservatively. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Detect reusable structures. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Preserve unsupported/unknown features as annotations. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Create deterministic IR fixtures. **I; verification and native acceptance are tracked in phase evidence.**
 
 ### Definition of Done
 
@@ -1805,17 +1847,17 @@ Generate maintainable React from the Design IR.
 
 ### Tasks
 
-- [ ] Component boundary strategy.
-- [ ] Naming strategy.
-- [ ] Semantic HTML mapping.
-- [ ] Layout conversion.
-- [ ] Responsive CSS generation.
-- [ ] Token → CSS variable mapping.
-- [ ] Asset handling.
-- [ ] Accessibility pass.
-- [ ] Unsupported-feature annotations.
-- [ ] Deterministic formatting.
-- [ ] Golden-file tests.
+- [x] Component boundary strategy. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Naming strategy. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Semantic HTML mapping. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Layout conversion. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Responsive CSS generation. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Token → CSS variable mapping. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Asset handling. **I; verification and native acceptance are tracked in phase evidence.**
+- [ ] Accessibility pass. **Partial: focus/semantic markup and diagnostics; no complete native/export accessibility acceptance.**
+- [x] Unsupported-feature annotations. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Deterministic formatting. **I; verification and native acceptance are tracked in phase evidence.**
+- [x] Golden-file tests. **I; verification and native acceptance are tracked in phase evidence.**
 
 ### Quality gate
 
@@ -1869,6 +1911,8 @@ Potential requirements:
 ---
 
 # 34. Recommended immediate implementation order
+
+Historical scaffold ordering below is retained for context. The alpha reconciliation and release gates above govern current work; this is not an instruction to repeat Phase 0.
 
 Codex should **not** attempt all phases.
 
