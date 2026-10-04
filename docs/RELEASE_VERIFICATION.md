@@ -14,3 +14,5 @@ GitHub CI and publication are separate from local checks; the release commit/tag
 Native project inspection is dated separately in ALPHA_ACCEPTANCE.md. No actual native write acceptance is inferred from fixture tests or release builds.
 
 GitHub checks passed on Node 22 and 24 for af146c4: https://github.com/Vytral/framer-plus/actions/runs/37243959680. The navigation-delay correction also passed the full local 72-test suite and generated build. Consult the latest GitHub run for its release-commit CI result.
+
+The corrected asynchronous navigation commit 4064727 passed GitHub checks on Node 22 and 24: https://github.com/Vytral/framer-plus/actions/runs/37244403326. Official navigation/reference documentation was re-fetched with Firecrawl on Oct 4; it confirms public page/node navigation and create/remove primitives. The native delayed-canvas observation is our acceptance evidence, not a guarantee stated by the documentation. Research cache is ignored and excluded from the release bundle.

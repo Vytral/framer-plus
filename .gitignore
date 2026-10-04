@@ -11,3 +11,6 @@ build/
 # Local assistant settings and manually packaged development archives
 .claude/
 apps/plugin.zip
+
+# Local documentation research cache
+.firecrawl/
