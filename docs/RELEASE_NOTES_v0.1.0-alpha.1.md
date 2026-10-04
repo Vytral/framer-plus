@@ -34,7 +34,7 @@ Authenticated loopback WSS, exact allowed origins, strict protocol-4 schemas, bo
 - Automatic content synchronization between independent responsive views and animation editing are not implemented; text writes are base-only.
 - Create/move/delete, asset insertion/replacement, shared style editing, complex/localized CMS mutations and branch lifecycle tools are not implemented in this alpha.
 - Native compare-and-set/atomic transactions are unavailable; fingerprints cannot eliminate collaborator races.
-- 71 automated tests and fixture builds pass. Real-editor project/page/node/style reads were observed; native mutation acceptance is incomplete. Home hierarchy and three-view/resource inspections were verified read-only; non-active-page lookup restrictions require explicit page navigation. No portfolio writes were made for release acceptance.
+- 72 automated tests and fixture builds pass. Real-editor project/page/node/style reads were observed; native mutation acceptance is incomplete. Home hierarchy and three-view/resource inspections were verified read-only; non-active-page lookup restrictions require explicit page navigation. Projects → Blog → Home navigation, Blog inspection/planning and plan revocation on leaving the page were also verified. No portfolio writes were made for release acceptance.
 - Full export fidelity/accessibility, Marketplace distribution and stable compatibility are not certified. Remote MCP and Server API integration are researched proposals, not shipped services.
 
 ## Installation / development status

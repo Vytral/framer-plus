@@ -6,6 +6,7 @@ Changes are documented here before each tagged release. Alpha versions may chang
 
 - Local authenticated MCP/editor bridge with 33 tools, cross-page discovery, bounded inspection and exact reviewed plans.
 - Mixed plans for nodes, responsive replicas, primitive instance controls, style links and scalar CMS records.
+- Explicit page navigation with canvas preconditions, approval/cursor invalidation and bounded asynchronous transition verification.
 - Correct breakpoint/component classification when native frames expose both variant and breakpoint flags.
 - Reconciled automated/native acceptance evidence and remote MCP security design without exposing a public bridge.
 - Structured snapshots and versioned Design IR with unsupported-feature diagnostics.

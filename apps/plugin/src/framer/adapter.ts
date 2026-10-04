@@ -414,7 +414,17 @@ export class EditorAdapter {
         this.cursors.clear()
         if (page.id !== previous.id) await this.api.project.openPage(page.id)
         this.guard(context)
-        const current = await this.api.getCanvasRoot()
+        let current = await this.api.getCanvasRoot()
+        for (
+          let attempt = 0;
+          current.id !== page.id && attempt < 20;
+          attempt++
+        ) {
+          this.guard(context)
+          await new Promise<void>((resolve) => setTimeout(resolve, 200))
+          this.guard(context)
+          current = await this.api.getCanvasRoot()
+        }
         if (
           current.id !== page.id ||
           (await this.api.getProjectInfo()).id !== project.id ||

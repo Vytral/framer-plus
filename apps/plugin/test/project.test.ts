@@ -760,3 +760,26 @@ test("explicit page navigation checks the active canvas and invalidates cursors 
     "APPROVAL_REQUIRED",
   )
 })
+
+test("page navigation waits for asynchronously observed canvas state without weakening preconditions", async () => {
+  const f = projectFixture()
+  f.add("page-two", null, "WebPageNode", { path: "/second" })
+  const read = f.api.getCanvasRoot
+  let navigating = false
+  let remaining = 2
+  required(f.api.project).openPage = async (id) => {
+    navigating = true
+    f.setCanvas(id)
+  }
+  f.api.getCanvasRoot = async () =>
+    navigating && remaining-- > 0
+      ? required(await f.api.getNode("page"))
+      : read()
+  const result = await call(f, "open_page", {
+    page: node("page-two"),
+    expectedCanvas: node("page"),
+  })
+  assert.equal(result.canvasRoot.id, "page-two")
+  assert.equal(f.writes.length, 0)
+  assert.equal(f.projectWrites.length, 0)
+})

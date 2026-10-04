@@ -27,24 +27,25 @@ On **2026-10-04**, an actual stdio MCP client listed **33 tools**, then the user
 
 Desktop/Tablet/Phone widths were 1200/810/390 px. Representative Hero snapshots exposed correct primary/base versus replica/breakpoint write capabilities after the fix; Phone effective height/padding differed from Desktop and provenance remained explicitly unknown. One instance resolved to a local definition, with five primitive controls and five concrete variant frames. Both style categories and referenced images were sampled with pagination. Two CMS collections, their schemas and one representative record each were inspected without exposing content in repository evidence. Selection inspection also succeeded.
 
-A cross-page limitation was observed: `/projects` and `/blog` page roots expose child IDs, and `/projects` breakpoint metadata is readable, but fresh `getNode` calls returned null for non-active-page breakpoint IDs. Their tree calls reported truncation with reason `changed`. Do not claim complete native cross-page hierarchy or mutation acceptance from fixture composition. Whether this is a runtime restriction or an adapter-resolvable API behavior needs investigation on a disposable project; no undocumented fallback or cached-write bypass was introduced.
+A cross-page limitation was observed: `/projects` and `/blog` page roots expose child IDs, and `/projects` breakpoint metadata is readable, but fresh `getNode` calls returned null for non-active-page breakpoint IDs. Their tree calls reported truncation with reason `changed`. Do not claim complete native cross-page hierarchy or mutation acceptance from fixture composition. Opening the page makes its nodes resolvable after the asynchronous canvas transition. No undocumented fallback or cached-write bypass was introduced.
 
 Outstanding native checklist:
 
-- [x] Identify project, active Home page and relevant pages — dated Oct 2 observation.
+- [x] Identify project, active Home page and all nine web pages — reverified Oct 4.
 - [x] Traverse every API-reachable Home descendant — 314 nodes / five pages / no remaining continuation roots. Component interiors remain outside this graph.
 - [x] Identify Desktop/Tablet/Phone and inspect Hero in each view after the fix.
 - [x] Inspect one instance, its five controls and resolved definition/variants.
 - [x] Inspect both style kinds and referenced images with continuation.
 - [x] Inspect both available collections/schemas and one representative record each.
 - [x] Prepare a real Tablet/Phone/CMS plan; returned pending, no approval/execution. Process restart revoked it.
+- [x] Verify explicit navigation between Projects, Blog and Home, readable nodes after opening, and automatic plan revocation when leaving Blog.
 - [ ] On a disposable project with explicit authorization, execute and verify supported mutations, responsive isolation, mixed plans and failure/recovery cases.
 
 The user's real portfolio has not been edited for this acceptance run. No arbitrary visible changes, publication, deletion or rollback occurred. Native write testing requires a disposable project or explicit approval of a concrete plan. Approval of connectivity is not authorization to execute a portfolio plan.
 
 ## Automated and build acceptance
 
-On 2026-10-04, frozen dependency installation and `pnpm check` passed: Biome formatting/lint, strict source/test TypeScript, **71 tests** (**46 plugin + 17 MCP + 8 design**) and all five workspace package builds. Plugin Vite and MCP TypeScript production builds passed. `pnpm verify:export` passed generated React fixture TypeScript and production Vite build using pinned existing dependencies.
+On 2026-10-04, frozen dependency installation and `pnpm check` passed: Biome formatting/lint, strict source/test TypeScript, **72 tests** (**47 plugin + 17 MCP + 8 design**) and all five workspace package builds. Plugin Vite and MCP TypeScript production builds passed. `pnpm verify:export` passed generated React fixture TypeScript and production Vite build using pinned existing dependencies.
 
 Coverage includes actual MCP SDK/WebSocket transport with fixture native adapters; that verifies the transport and semantic contract, not Framer's native mutation behavior. Native-boundary call-shape fixtures also exercise the public SDK adapter. New mixed-resource tests specifically cover cross-page/view composition, stale CMS preflight before any write and verified/unknown/skipped partial results with no replay.
 
@@ -68,6 +69,6 @@ Multi-page and multi-view plans are first-class operation arrays. Native non-act
 
 ## Sequential pages and independent views
 
-The official public SDK includes navigateTo. `open_page` now exposes explicit web-page navigation with expected active-canvas preconditions, project/branch checks and readback; it serializes with planning/writes and revokes old approvals/cursors. Reinspect the newly opened page and prepare a fresh page-local plan. No hidden navigation occurs during a reviewed cross-page batch. Native navigation acceptance is recorded after testing.
+The official public SDK includes navigateTo. `open_page` now exposes explicit web-page navigation with expected active-canvas preconditions, project/branch checks and readback; it serializes with planning/writes and revokes old approvals/cursors. Reinspect the newly opened page and prepare a fresh page-local plan. No hidden navigation occurs during a reviewed cross-page batch. Native testing confirmed navigateTo visibly opens Projects (user confirmation), and a later get_project/get_node resolves the new canvas and its Desktop. The immediate verification initially rejected the transition because Framer updates canvas state after navigateTo resolves. A bounded four-second wait now covers that lag; automated delayed-context regression verifies it. Native verification then passed Projects → Blog and Blog → Home with explicit previous/new canvas readback. Blog hierarchy and Desktop became readable, a page-local plan returned pending, and navigation back to Home changed that plan to rejected automatically. No design/CMS writes occurred.
 
 Independent responsive nodes are not automatically linked. Current text tools edit base nodes only; they do not safely synchronize arbitrary disconnected Phone/Desktop structures. Correspondence discovery, reviewed independent-view text synchronization and animation/effect coverage remain explicit stable-product work. Supported layout/visual editing does not imply access to every Framer property.
